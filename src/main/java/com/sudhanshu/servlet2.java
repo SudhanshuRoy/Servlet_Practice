@@ -3,9 +3,9 @@ package com.sudhanshu;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -39,11 +39,17 @@ public class servlet2 extends HttpServlet {
 		int s = n1 + n2;
 		int sum = (Integer) request.getAttribute("sum");
 		int product = n1 * n2;
-		
+
 		out.println("<h1>");
-		out.println("sum is : "+sum);
-		out.println("product is : "+product);
+		out.println("sum is : " + sum);
+		out.println("product is : " + product);
 		out.println("</h1>");
+		out.print("<h1>Hello," + request.getParameter("name") + " welcome to my website </h1>");
+		out.print("<h1><a href='s3'>Go to servlet 3</a></h1>");
+
+		Cookie cookie = new Cookie("name", request.getParameter("name"));
+		response.addCookie(cookie);
+
 	}
 
 	/**
